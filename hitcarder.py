@@ -150,11 +150,11 @@ def main(username, password, delay=4):
     """
     print("\n[Base Time] %s" % datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     # Add random delay
-    sleep_time = random.randint(0, 3600 * int(delay)) # delay time(hour)
-    #time.sleep(sleep_time)
-    print('Delay for {}s'.format(sleep_time))
-    for i in tqdm(range(sleep_time)):
-        time.sleep(1)
+    # sleep_time = random.randint(0, 3600 * int(delay)) # delay time(hour)
+    # #time.sleep(sleep_time)
+    # print('Delay for {}s'.format(sleep_time))
+    # for i in tqdm(range(sleep_time)):
+    #     time.sleep(1)
 
     print("[Start Time] %s" %datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     print("🚌 打卡任务启动")
@@ -219,12 +219,12 @@ if __name__ == "__main__":
     main(username, password, delay)
 
     # Schedule task
-    scheduler = BlockingScheduler()
-    scheduler.add_job(main, 'cron', args=[username, password], hour=hour, minute=minute)
-    print('⏰ 已启动定时程序，每天 %02d:%02d 为您打卡' % (int(hour), int(minute)))
-    print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
+    # scheduler = BlockingScheduler()
+    # scheduler.add_job(main, 'cron', args=[username, password], hour=hour, minute=minute)
+    # print('⏰ 已启动定时程序，每天 %02d:%02d 为您打卡' % (int(hour), int(minute)))
+    # print('Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
-    try:
-        scheduler.start()
-    except (KeyboardInterrupt, SystemExit):
-        pass
+    # try:
+    #     scheduler.start()
+    # except (KeyboardInterrupt, SystemExit):
+    #     pass
