@@ -4,7 +4,7 @@ import time, datetime, os
 from tqdm import tqdm
 import getpass
 import random
-import ddddocr
+# import ddddocr
 from halo import Halo
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -71,14 +71,14 @@ class HitCarder(object):
             res = self.sess.get(self.base_url, headers=self.headers)
             html = res.content.decode()
             print("\n")
-            print("huoqu OCR----------------")
-            captcha_url = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
-            ocr = ddddocr.DdddOcr()
-            resp = self.sess.get(captcha_url)
-            captcha = ocr.classification(resp.content)  
+            # print("huoqu OCR----------------")
+            # captcha_url = 'https://healthreport.zju.edu.cn/ncov/wap/default/code'
+            # ocr = ddddocr.DdddOcr()
+            # resp = self.sess.get(captcha_url)
+            # captcha = ocr.classification(resp.content)  
             print("\n")
-            print("yanzhengmashi")
-            print(captcha)
+            # print("yanzhengmashi")
+            # print(captcha)
 
         try:
             old_infos = re.findall(r'oldInfo: ({[^\n]+})', html)
@@ -111,7 +111,7 @@ class HitCarder(object):
         new_info['jcqzrq'] = ""
         new_info['gwszdd'] = ""
         new_info['szgjcs'] = ""
-        new_info['verifyCode'] = captcha
+        # new_info['verifyCode'] = captcha
         
         self.info = new_info
         return new_info
