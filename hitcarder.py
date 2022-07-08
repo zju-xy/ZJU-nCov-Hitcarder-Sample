@@ -112,7 +112,11 @@ class HitCarder(object):
         new_info['gwszdd'] = ""
         new_info['szgjcs'] = ""
         # new_info['verifyCode'] = captcha
-        
+                # add in 2022.07.08
+        new_info['sfymqjczrj'] = 2  #同住人员是否发热
+        new_info['ismoved'] = 4     #是否有离开
+        new_info['internship'] = 3  #是否进行实习
+        new_info['sfcxzysx'] = 2    #是否涉及疫情管控
         self.info = new_info
         return new_info
 
