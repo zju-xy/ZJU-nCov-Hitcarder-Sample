@@ -102,21 +102,32 @@ class HitCarder(object):
         new_info['number'] = number
         new_info["date"] = self.get_date()
         new_info["created"] = round(time.time())
+        new_info["address"] = "浙江省杭州市西湖区"
+        new_info["area"] = "浙江省 杭州市 西湖区"
+        new_info["province"] = new_info["area"].split(' ')[0]
+        new_info["city"] = new_info["area"].split(' ')[1]
         # form change
         new_info['jrdqtlqk[]'] = 0
         new_info['jrdqjcqk[]'] = 0
-        new_info['sfsqhzjkk'] = 1  # 是否申领杭州健康码
-        new_info['sqhzjkkys'] = 1  # 杭州健康吗颜色，1:绿色 2:红色 3:黄色
-        new_info['sfqrxxss'] = 1  # 是否确认信息属实
+        new_info['sfsqhzjkk'] = 1   # 是否申领杭州健康码
+        new_info['sqhzjkkys'] = 1   # 杭州健康吗颜色，1:绿色 2:红色 3:黄色
+        new_info['sfqrxxss'] = 1    # 是否确认信息属实
         new_info['jcqzrq'] = ""
         new_info['gwszdd'] = ""
         new_info['szgjcs'] = ""
-        # new_info['verifyCode'] = captcha
-                # add in 2022.07.08
+        
+        # add in 2022.07.08
         new_info['sfymqjczrj'] = 2  #同住人员是否发热
         new_info['ismoved'] = 4     #是否有离开
         new_info['internship'] = 3  #是否进行实习
         new_info['sfcxzysx'] = 2    #是否涉及疫情管控
+        
+   #     new_info['verifyCode'] = captcha
+        # 2021.08.05 Fix 2
+        magics = re.findall(r'"([0-9a-f]{32})":\s*"([^\"]+)"', html)
+        for item in magics:
+            new_info[item[0]] = item[1]
+
         self.info = new_info
         return new_info
 
